@@ -4,12 +4,7 @@ provider "aws" {
   secret_key = var.secret_key
 }
 
-
-resource "aws_instance" "terraform_demo_instance" {
-  ami           = "ami-0fff1b9a61dec8a5f"
-  instance_type = var.instance_type
-
-  tags = {
-    Name = "terraform_demo_Linux_instance"
-  }
+module "EC2_second_instance" {
+  source          = "./modules/compute"
+  instance_type_2 = "t2.micro"
 }
